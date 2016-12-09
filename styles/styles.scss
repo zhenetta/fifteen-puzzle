@@ -1,0 +1,183 @@
+$puzzle-item-width-small: 75px;
+$puzzle-item-width-regular: 100px;
+$layout-width-regular: 480px;
+$puzzle-container-border: 1px;
+$puzzle-container-width-small: $puzzle-item-width-small * 4 + $puzzle-container-border * 2;
+$puzzle-container-width-regular: $puzzle-item-width-regular * 4 + $puzzle-container-border * 2;
+$text-color: #7ca6aa;
+
+html {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: "Open Sans", Helvetica, sans-serif, Arial;
+	min-height: 100%;
+	box-sizing: border-box;
+	padding-bottom: 30px;
+	position: relative;
+}
+.main-container {
+	max-width: $puzzle-container-width-regular;
+	padding: 10px;
+	margin: 0 auto;
+	@media screen and (min-width: $layout-width-regular) {
+		padding: 40px;
+	}
+}
+
+.puzzle-container {
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto;
+	width: $puzzle-container-width-small;
+	height: $puzzle-container-width-small;
+	border: $puzzle-container-border solid #ddd;
+	box-sizing: border-box;
+	border-radius: 2px;
+	@media screen and (min-width: $layout-width-regular) {
+		width: $puzzle-container-width-regular;
+		height: $puzzle-container-width-regular;
+	}
+}
+.puzzle-item {
+	cursor: pointer;
+	width: $puzzle-item-width-small;
+	height: $puzzle-item-width-small;
+	position: absolute;
+	box-sizing: border-box;
+	background-color: #cce8eb;
+	border: 1px solid #afc9cc;
+	transition: left .2s ease-out, top .2s ease-out;
+	@media screen and (min-width: $layout-width-regular) {
+		width: $puzzle-item-width-regular;
+		height: $puzzle-item-width-regular;
+	}
+}
+.placeholder {
+	width: $puzzle-item-width-small;
+	height: $puzzle-item-width-small;
+	position: absolute;
+	box-sizing: border-box;
+	background: #f2f2f2;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2) inset;
+	@media screen and (min-width: $layout-width-regular) {
+		width: $puzzle-item-width-regular;
+		height: $puzzle-item-width-regular;
+	}
+}
+@for $i from 0 through 15 {
+	.place-#{$i + 1} {
+		top: floor($i / 4) * $puzzle-item-width-small;
+		left: $i % 4 * $puzzle-item-width-small;
+
+		@media screen and (min-width: $layout-width-regular) {
+			top: floor($i / 4) * $puzzle-item-width-regular;
+			left: $i % 4 * $puzzle-item-width-regular;
+		}
+	}
+
+	.placeholder-#{$i + 1} {
+		top: floor($i / 4) * $puzzle-item-width-small;
+		left: $i % 4 * $puzzle-item-width-small;
+
+		@media screen and (min-width: $layout-width-regular) {
+			top: floor($i / 4) * $puzzle-item-width-regular;
+			left: $i % 4 * $puzzle-item-width-regular;
+		}
+	}
+}
+
+.puzzle-item-inner {
+	width: 80%;
+    height: 80%;
+    text-align: center;
+    font-size: 32px;
+    line-height: 60px;
+    font-weight: 600;
+    color: $text-color;
+    text-shadow: 1px 1px 0px #fff;
+    margin: 10% auto;
+    -webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	@media screen and (min-width: $layout-width-regular) {
+		font-size: 40px;
+    	line-height: 78px;
+	}
+}
+
+.cover {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	opacity: 0;
+	transition: opacity .2s ease-out .2s, z-index 0s linear .2s;
+
+    &.completed {
+		opacity: 1;
+		z-index: 100;
+    }
+}
+.shadow {
+	background: #82e268;
+    opacity: 0.8;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.text {
+	position: relative;
+	color: #496f3e;
+	font-size: 40px;
+	line-height: 48px;
+	top: 50%;
+	margin-top: -24px;
+}
+.btn-container {
+	margin: 40px auto;
+	text-align: center;
+
+	.btn {
+		font-family: "Open Sans", sans-serif, Arial;
+		min-height: 40px;
+		font-size: 16px;
+		border: 0;
+		padding: 10px 30px;
+		background: #ddd;
+		border-radius: 3px;
+		color: #666;
+		outline: none;
+		cursor: pointer;
+		transition: background-color .1s linear;
+
+		&:hover {
+			background: mix(#000, #ddd, 10%);
+		}
+		&:active {
+			background: mix(#fff, #ddd, 10%);
+		}
+	}
+}
+//--------footer--------
+.footer {
+	text-align: center;
+	font-size: 10px;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	bottom: 0;
+	height: 30px;
+}
+.github-link {
+	text-decoration: none;
+	color: #999;
+	transition: color .1s linear;
+
+	&:hover {
+		color: #666;
+	}
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>15-puzzle</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="styles/styles.css" />
+	<script src="fifteen-puzzle.js"></script>
+</head>
+<body>
+	<div class="main-container"></div>
+	<script>
+    	var node = document.querySelector('.main-container');
+    	var app = Elm.FifteenPuzzle.embed(node);
+	</script>
+	<div class="footer">
+			<a href="https://github.com/zhenetta/fifteen-puzzle" class="github-link">View on github</a>
+	</div>
+</body>
+</html>
